@@ -1,12 +1,32 @@
-
-import './App.css'
-
+import './App.css';
+import FruitSelection from './components/FruitSelection.jsx';
+import Button from "./components/Button.jsx";
 function App() {
 
   return (
-    <>
-        <h1>Fruitmand bezorgservice</h1>
-    </>
+    <main>
+        <section>
+            <FruitSelection
+            typeOfFruit="Aardbeien"
+            />
+            <FruitSelection
+                typeOfFruit="Bananen"
+            />
+            <FruitSelection
+                typeOfFruit="Appels"
+            />
+            <FruitSelection
+                typeOfFruit="Kiwi's"
+            />
+            <Button
+                buttonText="Reset"
+                // clickHandler=
+            />
+        </section>
+        <section>
+
+        </section>
+    </main>
   )
 }
 
