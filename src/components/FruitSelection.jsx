@@ -10,6 +10,9 @@ function FruitSelection({typeOfFruit}) {
             setCount(count - 1);
         }
     }
+    const resetCount = () => {
+        setCount(0);
+    };
 
     console.log(count)
 
@@ -24,6 +27,10 @@ function FruitSelection({typeOfFruit}) {
             <Button
                 buttonText="+"
                 clickHandler={incrementCount}
+            />
+            <Button
+                buttonText="Reset"
+                clickHandler={resetCount}
             />
         </div>
     )

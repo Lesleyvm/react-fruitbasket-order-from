@@ -2,53 +2,79 @@ import './App.css';
 import FruitSelection from './components/FruitSelection.jsx';
 import Button from "./components/Button.jsx";
 import InputFields from "./components/InputFields.jsx";
+import {useState} from "react";
 function App() {
+const [formState, setFromstate] = useState({
+    firstname: "",
+    lastname: "",
+    age: 0,
+    zipCode:"",
+    frequency: "weekly",
+    duringDay: false,
+    duringNight: false,
+    comments: "",
+    newsletter: false,
+
+});
+
+function changeHandler(e){
+    setFromstate({
+        ...formState,
+        [e.target.name]: e.target.value
+    })
+}
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        console.log(formState);
+    }
+
+
 
   return (
     <main>
         <section>
             <FruitSelection
-            typeOfFruit="Aardbeien"
+            typeOfFruit=" 🍓 Aardbeien"
             />
             <FruitSelection
-                typeOfFruit="Bananen"
+                typeOfFruit="🍌 Bananen"
             />
             <FruitSelection
-                typeOfFruit="Appels"
+                typeOfFruit="🍏 Appels"
             />
             <FruitSelection
-                typeOfFruit="Kiwi's"
-            />
-            <Button
-                buttonText="Reset"
-                // clickHandler=
+                typeOfFruit="🥝 Kiwi's"
             />
         </section>
         <section>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <InputFields
                 id="first-name-field"
                 labelText="Voornaam"
                 type="text"
-                name="firstname-field"
+                name="firstname"
+                value={formState.firstname}
+                onChange={changeHandler}
+
                 />
                 <InputFields
                     id="last-name-field"
                     labelText="Achternaam"
                     type="text"
-                    name="lastname-field"
+                    name="lastname"
                 />
                 <InputFields
                     id="age-field"
                     labelText="Leeftijd"
                     type="number"
-                    name="age-field"
+                    name="age"
                 />
                 <InputFields
                     id="zip-code-field"
                     labelText="Postcode"
                     type="Text"
-                    name="zip-code-field"
+                    name="zipCode"
                 />
                 <label htmlFor="frequency">Bezorgfrequentie</label>
                 <select name="frequency"
@@ -58,7 +84,7 @@ function App() {
                     <option value="quarterly">Elk kwartaal</option>
                     <option value="yearly">Jaarlijks</option>
                 </select>
-                <div>
+                <div className="form-group1">
                 <InputFields
                     id="time-of-day"
                     labelText="Overdag"
@@ -72,22 +98,23 @@ function App() {
                         name="duringNight"
                     />
                 </div>
-                <label htmlFor="comments">Opmerkingen</label>
-                <textarea name="comment-section"
-                          id="comments"
+                <div className="form-group2">
+                <label htmlFor="comment-section">Opmerkingen</label>
+                <textarea name="comments"
+                          id="comment-section"
                           cols="30"
                           rows="10">
                 </textarea>
+                </div>
                 <InputFields
                     id="newsletter"
                     labelText="Ik ga akkoord met de algemene voorwaarden"
                     type="checkbox"
-                    name="checkbox"
+                    name="newsletter"
                 />
                 <Button
                     buttonText="Verzend"
                     buttonType="submit"
-                    // clickHandler=
                 />
             </form>
         </section>
